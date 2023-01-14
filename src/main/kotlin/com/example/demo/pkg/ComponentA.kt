@@ -13,11 +13,21 @@ class ComponentA(
     fun describeMe() = "ComponentA -> ${someRepository.describeMe()}"
 }
 
+class ComponentB(
+    private val componentA: ComponentA
+) {
+    fun describeMe() = "ComponentB -> ${componentA.describeMe()}"
+}
+
 @Component
 class ProgrammaticBootstrapper: ApplicationContextAware {
     override fun setApplicationContext(applicationContext: ApplicationContext) {
-        (applicationContext as GenericApplicationContext).registerBean(
+        val genericContext = (applicationContext as GenericApplicationContext)
+        genericContext.registerBean(
             ComponentA::class.java, noopBeanCustomizer
+        )
+        genericContext.registerBean(
+            ComponentB::class.java, noopBeanCustomizer
         )
     }
 }
