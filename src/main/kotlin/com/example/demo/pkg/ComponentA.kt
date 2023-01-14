@@ -24,10 +24,10 @@ class ProgrammaticBootstrapper: ApplicationContextAware {
     override fun setApplicationContext(applicationContext: ApplicationContext) {
         val genericContext = (applicationContext as GenericApplicationContext)
         genericContext.registerBean(
-            ComponentA::class.java, noopBeanCustomizer
+            ComponentB::class.java, noopBeanCustomizer
         )
         genericContext.registerBean(
-            ComponentB::class.java, noopBeanCustomizer
+            ComponentA::class.java, noopBeanCustomizer
         )
     }
 }
