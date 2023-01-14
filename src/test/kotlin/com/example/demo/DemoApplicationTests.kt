@@ -38,7 +38,7 @@ class DemoApplicationTests(
 
 	@Test
 	fun `app should contain component C which is beaned`() {
-		assertThat(componentB.describeMe()).isEqualTo("ComponentB -> ComponentA -> someRepository")
+		assertThat(componentCBeaned.describeMe()).isEqualTo("ComponentCBeaned")
 	}
 
 }
