@@ -13,6 +13,7 @@ class DemoApplicationTests(
 	@Autowired private val componentB: ComponentB,
 	@Autowired private val componentCBeaned: ComponentCBeaned,
 	@Autowired private val componentDBeaned: ComponentDBeaned,
+	@Autowired private val someComponent: SomeComponent,
 ) {
 
 	@Test
@@ -42,6 +43,11 @@ class DemoApplicationTests(
 	@Test
 	fun `app should contain component D which is beaned`() {
 		assertThat(componentDBeaned.describeMe()).isEqualTo("ComponentDBeaned -> someRepository")
+	}
+
+	@Test
+	fun SomeComponent() {
+		assertThat(someComponent.describeMe()).isEqualTo("SomeComponent -> ComponentB -> ComponentA -> someRepository")
 	}
 
 }
