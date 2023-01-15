@@ -1,9 +1,6 @@
 package com.example.demo
 
-import com.example.demo.pkg.ComponentA
-import com.example.demo.pkg.ComponentB
-import com.example.demo.pkg.ComponentCBeaned
-import com.example.demo.pkg.SomeRepository
+import com.example.demo.pkg.*
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -15,6 +12,7 @@ class DemoApplicationTests(
 	@Autowired private val componentA: ComponentA,
 	@Autowired private val componentB: ComponentB,
 	@Autowired private val componentCBeaned: ComponentCBeaned,
+	@Autowired private val componentDBeaned: ComponentDBeaned,
 ) {
 
 	@Test
@@ -39,6 +37,11 @@ class DemoApplicationTests(
 	@Test
 	fun `app should contain component C which is beaned`() {
 		assertThat(componentCBeaned.describeMe()).isEqualTo("ComponentCBeaned")
+	}
+
+	@Test
+	fun `app should contain component D which is beaned`() {
+		assertThat(componentDBeaned.describeMe()).isEqualTo("ComponentDBeaned -> someRepository")
 	}
 
 }

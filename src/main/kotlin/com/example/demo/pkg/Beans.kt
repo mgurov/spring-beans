@@ -8,8 +8,16 @@ class ComponentCBeaned {
     fun describeMe() = "ComponentCBeaned"
 }
 
+class ComponentDBeaned(
+    // private val componentA: ComponentA - not working.
+    private val someRepository: SomeRepository,
+) {
+    fun describeMe() = "ComponentDBeaned -> ${someRepository.describeMe()}"
+}
+
 val beans = beans {
     bean<ComponentCBeaned>()
+    bean<ComponentDBeaned>()
 }
 
 // see application.properties
